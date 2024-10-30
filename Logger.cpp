@@ -6,7 +6,7 @@
 
 Logger::Logger()
 {
-    fs.open(LOGGER_FILE, std::ios::in | std::ios::app);
+    fs.open(LOGGER_FILE, std::ios::out | std::ios::app);
     if (!fs.is_open())
     {
         rout("Не могу открыть log-файл\n");
@@ -16,10 +16,7 @@ Logger::Logger()
 Logger::~Logger()
 {
     fs.close();
-    if (fs.is_open())
-    {
-        rout("Не могу закрыть log-файл\n");
-    }
+    
 }
 
 void Logger::writeStr(const std::string& str)
